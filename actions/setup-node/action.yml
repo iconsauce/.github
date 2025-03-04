@@ -10,7 +10,7 @@ runs:
   using: composite
   steps:
     - name: Use Node Version from .nvmrc
-      uses: actions/setup-node@4
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
         node-version-file: '.nvmrc'
