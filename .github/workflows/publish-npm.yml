@@ -5,8 +5,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Log
+        run: |
+          echo "github repository: ${{ github.repository }}"
+        shell: bash
       - name: Istantiate Node
         uses: ./github/actions/setup-node
       - name: Publish Package

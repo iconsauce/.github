@@ -9,7 +9,15 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Log
+      run: |
+        echo "github repository: ${{ github.repository }}"
+      shell: bash
     - uses: actions/checkout@v4
+    - name: Log
+      run: |
+        echo "github repository: ${{ github.repository }}"
+      shell: bash
     - name: Use Node Version from .nvmrc
       uses: actions/setup-node@v4
       with:
