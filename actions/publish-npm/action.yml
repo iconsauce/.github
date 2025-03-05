@@ -1,0 +1,27 @@
+name: Publish to NPM
+description: Publish the package to the NPM registry
+inputs:
+  tag:
+    description: The tag to publish to on NPM.
+  token:
+    description: The NPM authentication token required to publish.
+
+runs:
+  using: 'composite'
+  steps:
+    # Log the input from GitHub Actions for easy traceability
+    - name: Log Inputs
+      run: |
+        echo "Version: ${{ inputs.version }}"
+        echo "Tag: ${{ inputs.tag }}"
+      shell: bash
+
+    - name: Prepare NPM Token
+      run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+      env:
+        NPM_TOKEN: ${{ inputs.token }}
+      shell: bash
+
+    - name: Publish to NPM
+      run: npm publish --dry-run --tag ${{ inputs.tag }} --provenance
+      shell: bash
