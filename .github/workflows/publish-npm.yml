@@ -8,8 +8,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Istantiate Node
-        uses: ./.github/actions/setup-node
+        uses: iconsauce/.github/.github/actions/setup-node
       - name: Publish Package
-        uses: ./.github/actions/publish-npm
+        uses: iconsauce/.github/.github/actions/publish-npm
         with:
           token: ${{ secrets.NPM_TOKEN }}
