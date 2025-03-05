@@ -1,8 +1,8 @@
 name: Publish to NPM
 description: Publish the package to the NPM registry
 inputs:
-  tag:
-    description: The tag to publish to on NPM.
+  # tag:
+  #   description: The tag to publish to on NPM.
   token:
     description: The NPM authentication token required to publish.
 
@@ -23,5 +23,5 @@ runs:
       shell: bash
 
     - name: Publish to NPM
-      run: npm publish --dry-run --tag ${{ inputs.tag }} --provenance
+      run: npm publish --dry-run --provenance
       shell: bash
