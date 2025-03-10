@@ -9,6 +9,8 @@ jobs:
         run: |
           echo "github repository: ${{ github.repository }}"
         shell: bash
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Istantiate Node
         uses: iconsauce/.github/.github/actions/setup-node@main
       - name: Publish Package

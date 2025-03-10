@@ -17,11 +17,12 @@ runs:
       shell: bash
 
     - name: Prepare NPM Token
-      run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+      run: |
+        echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
       env:
         NPM_TOKEN: ${{ inputs.token }}
       shell: bash
 
     - name: Publish to NPM
-      run: npm publish --dry-run --provenance
+      run: npm publish --provenance --access public
       shell: bash
