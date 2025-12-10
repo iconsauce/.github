@@ -33,5 +33,5 @@ runs:
       run: |
         echo "node version: $(node --version)" 
         echo "npm version: $(npm --version)"
-
+      shell: bash
       
