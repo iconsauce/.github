@@ -25,11 +25,13 @@ runs:
         node-version-file: '.nvmrc'
         cache: 'npm'
     - name: Install Dependencies
-      run: npm install -g npm@latest
-      run: npm ci
+      run: |
+        npm install -g npm@latest
+        npm ci
       shell: bash
     - name: Log
-      run: echo "node version: $(node --version)" 
-      run: echo "npm version: $(npm --version)"
+      run: |
+        echo "node version: $(node --version)" 
+        echo "npm version: $(npm --version)"
 
       
