@@ -10,11 +10,11 @@ runs:
   using: 'composite'
   steps:
     # Log the input from GitHub Actions for easy traceability
-    - name: Log Inputs
-      run: |
-        echo "Version: ${{ inputs.version }}"
-        echo "Tag: ${{ inputs.tag }}"
-      shell: bash
+    # - name: Log Inputs
+    #   run: |
+    #     echo "Version: ${{ inputs.version }}"
+    #     echo "Tag: ${{ inputs.tag }}"
+    #   shell: bash
 
     - name: Prepare NPM Token
       run: |

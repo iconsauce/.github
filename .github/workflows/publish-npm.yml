@@ -19,4 +19,5 @@ jobs:
       - name: Publish Package
         uses: iconsauce/.github/.github/actions/publish-npm@main
         with:
+          package-manager-cache: false
           token: ${{ secrets.NPM_TOKEN }}

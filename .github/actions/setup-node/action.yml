@@ -1,6 +1,10 @@
 name: Get Node and install deps
 description: Sets the Node.js version and initializes core dependencies
 inputs:
+  package-manager-cache:
+    description: 'Use of cache'
+    required: false
+    default: true
   node-version:
     description: 'Number of Octocats'
     required: false
@@ -13,17 +17,18 @@ runs:
       run: |
         echo "github repository: ${{ github.repository }}"
       shell: bash
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Log
       run: |
         echo "github repository: ${{ github.repository }}"
       shell: bash
     - name: Use Node Version from .nvmrc
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ inputs.node-version }}
         node-version-file: '.nvmrc'
         cache: 'npm'
+        package-manager-cache: ${{ inputs.package-manager-cache }}
     - name: Install Dependencies
       run: |
         npm install -g npm@latest
