@@ -1,28 +1,13 @@
 name: Publish to NPM
-description: Publish the package to the NPM registry
-inputs:
-  # tag:
-  #   description: The tag to publish to on NPM.
-  token:
-    description: The NPM authentication token required to publish.
+description: Publish the package to the NPM registry with npm trusted publishing (OIDC)
 
+# No token: the npm CLI exchanges the GitHub Actions OIDC token for short-lived
+# credentials and attaches provenance automatically. The calling job needs
+# `id-token: write`, and the package must have the repository and the calling
+# workflow file registered as trusted publisher on npmjs.com.
 runs:
   using: 'composite'
   steps:
-    # Log the input from GitHub Actions for easy traceability
-    # - name: Log Inputs
-    #   run: |
-    #     echo "Version: ${{ inputs.version }}"
-    #     echo "Tag: ${{ inputs.tag }}"
-    #   shell: bash
-
-    - name: Prepare NPM Token
-      run: |
-        echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-      env:
-        NPM_TOKEN: ${{ inputs.token }}
-      shell: bash
-
     - name: Publish to NPM
       run: npm publish --provenance --access public
       shell: bash
